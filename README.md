@@ -10,7 +10,6 @@ A Aplicação será capaz de registrar diversos conteúdos relacionado ao Person
 - Informações Gerais do **Personagem**;
 - **Habilidades** que o personagem possui;
 - **Universo** a qual o personagem pertence;
-- 
 
 ### O Que Será Necessário?
 
