@@ -1,8 +1,9 @@
 import express from 'express';
+import db from './database/connection';
 
 const routes = express.Router();
 
-routes.post('/chars', (request, response) => {
+routes.post('/chars', async (request, response) => {
   const {
     name,
     age,
@@ -10,6 +11,7 @@ routes.post('/chars', (request, response) => {
     bio,
     height,
     weight,
+    race,
     left_eye_color,
     right_eye_color,
     hair_color,
@@ -19,7 +21,32 @@ routes.post('/chars', (request, response) => {
     universe_bio,
   } = request.body;
 
-  console.log(data)
+  const insertedCharsIds = await db('chars').insert({
+    name,
+    age,
+    avatar,
+    bio,
+    height,
+    weight,
+    race,
+    left_eye_color,
+    right_eye_color,
+    hair_color
+  });
+
+  const char_id = insertedCharsIds[0];
+
+  await db('skills').insert({
+    skill_name,
+    skill_bio,
+    char_id
+  })
+
+  await db('universes').insert({
+    universe_name,
+    universe_bio,
+    char_id
+  })
 
   return response.send();
 });
