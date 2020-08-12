@@ -6,8 +6,8 @@ export async function up(knex: Knex) {
     table.string('universe_name').notNullable();
     table.string('universe_bio', 2000).notNullable();
 
-    table.integer('char_id').unsigned()
-    table.foreign('char_id').references('id').inTable('chars')
+    table.integer('char_id').unsigned().notNullable(); 
+    table.foreign('char_id').references('id').inTable('chars');
   });
 }
 

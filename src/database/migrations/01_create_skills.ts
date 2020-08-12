@@ -6,8 +6,10 @@ export async function up(knex: Knex) {
     table.string('skill_name').notNullable();
     table.string('skill_bio', 2000).notNullable();
 
-    table.integer('char_id').unsigned()
-    table.foreign('char_id').references('id').inTable('chars')
+    table.integer('char_id').unsigned().notNullable(); 
+    // Unsigned realoca a quantidade de valores reservado para os 
+    // valores negativos e os transfere para os valores positivos.
+    table.foreign('char_id').references('id').inTable('chars');
   });
 }
 
