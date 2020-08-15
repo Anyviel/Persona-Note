@@ -15,5 +15,6 @@ A Aplicação será capaz de registrar diversos conteúdos relacionado ao Person
 
 - Rota para criar um Personagem;
   - Nesta rota serão feito os registros das habilidades e do universo pertencente;
+- Rota para criar Habilidades;
 - Rota para listar os Personagens;
   - Será possível filtrar por temas especificos;
