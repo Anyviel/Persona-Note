@@ -8,7 +8,7 @@ interface SkillItem {
 
 export default class CharsControllers {
   async index(request: Request, response: Response) {
-    const filters = request.query;
+    // const filters = request.query;
 
     // if (!filters.name || !filters.universe_name || !filters.skill_name) {
     //   return response.status(400).send({
@@ -20,6 +20,7 @@ export default class CharsControllers {
     const serializedChars = characters.map(character => {
       console.log(character)
       return {
+        id: character.id,
         name: character.name,
         age: character.age,
         avatar: character.avatar,
