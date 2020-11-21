@@ -10,11 +10,31 @@ export default class CharsControllers {
   async index(request: Request, response: Response) {
     const filters = request.query;
 
-    if (!filters.name || !filters.universe_name || !filters.skill_name) {
-      return response.status(400).send({
-        error: "Error, não há filtros para serem verificados."
-      })
-    }
+    // if (!filters.name || !filters.universe_name || !filters.skill_name) {
+    //   return response.status(400).send({
+    //     error: "Error, não há filtros para serem verificados."
+    //   })
+    // }
+
+    const characters = await db('chars').select('*');
+    const serializedChars = characters.map(character => {
+      console.log(character)
+      return {
+        name: character.name,
+        age: character.age,
+        avatar: character.avatar,
+        bio: character.bio,
+        height: character.height,
+        weight: character.weight,
+        race: character.race,
+        l_eye_color: character.left_eye_color,
+        r_eye_color: character.right_eye_color,
+        hair_color: character.hair_color,
+      }
+    })
+    // console.log(characters);
+    // console.log(serializedChars);
+    return response.json(serializedChars);
   }
 
   async create(request: Request, response: Response) {
@@ -34,7 +54,7 @@ export default class CharsControllers {
       universe_bio,
     } = request.body;
 
-    console.log(skills);
+    // console.log(skills);
     
     const trx = await db.transaction();
     
