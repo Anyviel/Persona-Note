@@ -77,9 +77,10 @@ class CharsControllers {
       })
 
       for (let i = 0; i < skillList.length; i++) {
-        const [skill_id] = await trx('skills').insert(skillList[i])
+        const response = await trx('skills').insert(skillList[i])
 
-        // console.log(skill_id);
+        console.log(response);
+        const skill_id = response;
 
         const charSkill = {
           char_id,
