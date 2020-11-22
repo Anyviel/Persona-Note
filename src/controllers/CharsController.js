@@ -65,7 +65,7 @@ class CharsControllers {
           left_eye_color,
           right_eye_color,
           hair_color
-        }).then((res) => {
+        }).then(async (res) => {
     
           console.log('resposta callbackhell', res);
 
