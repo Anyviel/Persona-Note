@@ -82,6 +82,8 @@ class CharsControllers {
         console.log("Começamos a merda por aqui feelsOkay", response);
         const skill_id = response;
 
+
+        console.log("Aqui começa outro log", charSkill);
         const charSkill = {
           char_id,
           skill_id
