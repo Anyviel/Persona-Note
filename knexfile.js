@@ -5,7 +5,7 @@ module.exports = {
   // connection: {
   //   filename: path.resolve(__dirname, 'src', 'database', 'database.sqlite'),
   // },
-  client: 'postgresql',
+  client: 'pg',
   connection: process.env.DATABASE_URL,
   migrations: {
     directory: path.resolve(__dirname, 'src', 'database', 'migrations')
