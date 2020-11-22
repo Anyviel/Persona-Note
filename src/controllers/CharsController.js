@@ -99,7 +99,7 @@ class CharsControllers {
   
       return response.status(201).send();
     } catch (err) {
-      // console.log(err);
+      console.log(err);
   
       await trx.rollback() 
   
