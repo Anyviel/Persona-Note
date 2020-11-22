@@ -54,53 +54,56 @@ class CharsControllers {
     const trx = await db.transaction();
     
     try {  
-      const insertedCharsIds = await trx('chars').insert({
-        name,
-        age,
-        avatar,
-        bio,
-        height,
-        weight,
-        race,
-        left_eye_color,
-        right_eye_color,
-        hair_color
-      });
-  
-      const char_id = insertedCharsIds[0];
-      console.log("Aqui começa outro log", char_id);
-      
-      const skillList = skills.map((skillItem) => {
-        return {
-          skill_name: skillItem.skill_name,
-          skill_bio: skillItem.skill_bio
+        trx('chars').insert({
+          name,
+          age,
+          avatar,
+          bio,
+          height,
+          weight,
+          race,
+          left_eye_color,
+          right_eye_color,
+          hair_color
+        }).then((res) => {
+    
+          console.log('resposta callbackhell', res);
+
+        const char_id = res[0];
+        console.log("Aqui começa outro log", char_id);
+        
+        const skillList = skills.map((skillItem) => {
+          return {
+            skill_name: skillItem.skill_name,
+            skill_bio: skillItem.skill_bio
+          }
+        })
+
+        for (let i = 0; i < skillList.length; i++) {
+          const response = await trx('skills').insert(skillList[i])
+
+          console.log("Começamos a merda por aqui feelsOkay", response);
+          const skill_id = response;
+
+
+          const charSkill = {
+            char_id,
+            skill_id
+          }
+
+          await trx('char_skills').insert(charSkill);
         }
+
+        await trx('universes').insert({
+          universe_name,
+          universe_bio,
+          char_id
+        })
+    
+        await trx.commit();
+    
+        return response.status(201).send();
       })
-
-      for (let i = 0; i < skillList.length; i++) {
-        const response = await trx('skills').insert(skillList[i])
-
-        console.log("Começamos a merda por aqui feelsOkay", response);
-        const skill_id = response;
-
-
-        const charSkill = {
-          char_id,
-          skill_id
-        }
-
-        await trx('char_skills').insert(charSkill);
-      }
-
-      await trx('universes').insert({
-        universe_name,
-        universe_bio,
-        char_id
-      })
-  
-      await trx.commit();
-  
-      return response.status(201).send();
     } catch (err) {
       console.log(err);
   
