@@ -1,14 +1,22 @@
 const path = require('path');
 
 module.exports = {
-  // client: 'sqlite3',
-  // connection: {
-  //   filename: path.resolve(__dirname, 'src', 'database', 'database.sqlite'),
-  // },
-  client: 'pg',
-  connection: process.env.DATABASE_URL,
-  migrations: {
-    directory: path.resolve(__dirname, 'src', 'database', 'migrations')
+  development: {
+    client: 'sqlite3',
+    connection: {
+      filename: path.resolve(__dirname, 'src', 'database', 'database.sqlite'),
+    },
+    migrations: {
+      directory: path.resolve(__dirname, 'src', 'database', 'migrations')
+    },
+    useNullAsDefault: true
   },
-  useNullAsDefault: true
+  production: {
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
+    migrations: {
+      directory: path.resolve(__dirname, 'src', 'database', 'migrations')
+    },
+    useNullAsDefault: true
+  }
 };
