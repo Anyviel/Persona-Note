@@ -79,7 +79,7 @@ class CharsControllers {
       for (let i = 0; i < skillList.length; i++) {
         const response = await trx('skills').insert(skillList[i])
 
-        console.log(response);
+        console.log("Começamos a merda por aqui feelsOkay", response);
         const skill_id = response;
 
         const charSkill = {
