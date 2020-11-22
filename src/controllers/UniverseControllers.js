@@ -3,6 +3,7 @@ const db = require('../database/connection');
 
 class UniversesControllers {
   async index(request, response) {
+    console.log("Eu existo");
     const universes = await db('universes').select('*');
 
     const serialUniverses = universes.map(universe => {
