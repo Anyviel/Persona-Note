@@ -67,6 +67,7 @@ class CharsControllers {
         hair_color
       });
   
+      console.log(insertedCharsIds[0]);
       const char_id = insertedCharsIds[0];
   
       const skillList = skills.map((skillItem) => {
