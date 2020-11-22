@@ -1,6 +1,4 @@
-import Knex from 'knex';
-
-export async function up(knex: Knex) {
+module.exports.up = async function up(knex) {
   return knex.schema.createTable('char_skills', table => {
     // table.increments('id').primary();
     
@@ -14,6 +12,6 @@ export async function up(knex: Knex) {
   });
 }
 
-export async function down(knex: Knex) {
+module.exports.down =  async function down(knex) {
   return knex.schema.dropTable('char_skills');
 };

@@ -1,8 +1,8 @@
-import {Request, Response} from 'express';
-import db from '../database/connection';
+// import {Request, Response} from 'express';
+const db = require('../database/connection');
 
-export default class UniversesControllers {
-  async index(request: Request, response: Response) {
+class UniversesControllers {
+  async index(request, response) {
     const universes = await db('universes').select('*');
 
     const serialUniverses = universes.map(universe => {
@@ -15,3 +15,5 @@ export default class UniversesControllers {
     return response.json(serialUniverses);
   }
 }
+
+module.exports = UniversesControllers;

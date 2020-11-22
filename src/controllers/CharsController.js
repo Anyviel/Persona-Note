@@ -1,13 +1,7 @@
-import {Request, Response} from 'express';
-import db from '../database/connection';
+const db = require('../database/connection');
 
-interface SkillItem {
-  skill_name: String;
-  skill_bio: String;
-}
-
-export default class CharsControllers {
-  async index(request: Request, response: Response) {
+class CharsControllers {
+  async index(request, response) {
     // const filters = request.query;
 
     // if (!filters.name || !filters.universe_name || !filters.skill_name) {
@@ -38,7 +32,7 @@ export default class CharsControllers {
     return response.json(serializedChars);
   }
 
-  async create(request: Request, response: Response) {
+  async create(request, response) {
     const {
       name,
       age,
@@ -75,7 +69,7 @@ export default class CharsControllers {
   
       const char_id = insertedCharsIds[0];
   
-      const skillList = skills.map((skillItem: SkillItem) => {
+      const skillList = skills.map((skillItem) => {
         return {
           skill_name: skillItem.skill_name,
           skill_bio: skillItem.skill_bio
@@ -115,3 +109,5 @@ export default class CharsControllers {
     }
   }
 }
+
+module.exports = CharsControllers;

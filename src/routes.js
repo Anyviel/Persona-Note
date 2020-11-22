@@ -1,7 +1,7 @@
-import express, { response } from 'express';
-import CharsControllers from './controllers/CharsController';
-import SkillsControllers from './controllers/SkillsController';
-import UniversesControllers from './controllers/UniverseControllers';
+const express = require('express');
+const CharsControllers = require('./controllers/CharsController');
+const SkillsControllers = require('./controllers/SkillsController');
+const UniversesControllers = require('./controllers/UniverseControllers');
 // import db from './database/connection';
 
 const routes = express.Router();
@@ -16,4 +16,4 @@ routes.get('/universes', universesControllers.index);
 
 routes.post('/chars', charsControllers.create);
 
-export default routes;
+module.exports = routes;
