@@ -68,7 +68,8 @@ class CharsControllers {
       });
   
       const char_id = insertedCharsIds[0];
-  
+      console.log("Aqui começa outro log", char_id);
+      
       const skillList = skills.map((skillItem) => {
         return {
           skill_name: skillItem.skill_name,
@@ -83,7 +84,6 @@ class CharsControllers {
         const skill_id = response;
 
 
-        console.log("Aqui começa outro log", charSkill);
         const charSkill = {
           char_id,
           skill_id
