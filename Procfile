@@ -1,1 +1,1 @@
-web: knex migrate:rollback && knex migrate:latest && node ./src/server.ts
+web: knex migrate:rollback && knex migrate:latest && yarn start
