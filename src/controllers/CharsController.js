@@ -90,11 +90,11 @@ class CharsControllers {
       //   await trx('char_skills').insert(charSkill);
       // }
 
-      await trx('universes').insert({
-        universe_name,
-        universe_bio,
-        // char_id
-      })
+      // await trx('universes').insert({
+      //   universe_name,
+      //   universe_bio,
+      //   char_id
+      // })
   
       await trx.commit();
   
