@@ -68,7 +68,7 @@ class CharsControllers {
       });
   
       console.log(insertedCharsIds);
-      // const char_id = insertedCharsIds[0];
+      const char_id = insertedCharsIds[0];
   
       // const skillList = skills.map((skillItem) => {
       //   return {
