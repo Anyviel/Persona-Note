@@ -68,7 +68,7 @@ class CharsControllers {
       });
   
       console.log(insertedCharsIds);
-      const char_id = insertedCharsIds[0];
+      // const char_id = insertedCharsIds[0];
   
       // const skillList = skills.map((skillItem) => {
       //   return {
@@ -93,7 +93,7 @@ class CharsControllers {
       await trx('universes').insert({
         universe_name,
         universe_bio,
-        char_id
+        // char_id
       })
   
       await trx.commit();
