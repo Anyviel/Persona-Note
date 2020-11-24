@@ -68,33 +68,33 @@ class CharsControllers {
       });
   
       console.log(insertedCharsIds);
-      // const char_id = insertedCharsIds[0];
+      const char_id = insertedCharsIds[0];
   
-      // const skillList = skills.map((skillItem) => {
-      //   return {
-      //     skill_name: skillItem.skill_name,
-      //     skill_bio: skillItem.skill_bio
-      //   }
-      // })
+      const skillList = skills.map((skillItem) => {
+        return {
+          skill_name: skillItem.skill_name,
+          skill_bio: skillItem.skill_bio
+        }
+      })
 
-      // for (let i = 0; i < skillList.length; i++) {
-      //   const [skill_id] = await trx('skills').insert(skillList[i])
+      for (let i = 0; i < skillList.length; i++) {
+        const [skill_id] = await trx('skills').insert(skillList[i])
 
-      //   // console.log(skill_id);
+        // console.log(skill_id);
 
-      //   const charSkill = {
-      //     char_id,
-      //     skill_id
-      //   }
+        const charSkill = {
+          char_id,
+          skill_id
+        }
 
-      //   await trx('char_skills').insert(charSkill);
-      // }
+        await trx('char_skills').insert(charSkill);
+      }
 
-      // await trx('universes').insert({
-      //   universe_name,
-      //   universe_bio,
-      //   char_id
-      // })
+      await trx('universes').insert({
+        universe_name,
+        universe_bio,
+        char_id
+      })
   
       await trx.commit();
   
